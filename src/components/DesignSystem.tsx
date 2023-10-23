@@ -280,4 +280,4 @@ export const Home: FC<{}> = () => {
   );
 }
 
-export default Home;
+export { Body, Button, Heading, Eth, Twitter, Link, Box, Code, Stack, Grid, Youtube, Menu, ChevronDown, Discord, Logo, Fast, Medium, Slow, External, Footer, Navigation, Wallet, image };
