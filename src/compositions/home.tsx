@@ -30,7 +30,6 @@ export const Home: FC<{}> = () => {
   };
 
   const BoxHorSnippet = `<Box localStyles={{ padding: 48, background: '#343434' }}>...</Box>`;
-  const StackHorSnippet = `<Stack space={24} direction='HORIZONTAL'>...</Stack>`;
   const StackVerSnippet = `<Stack space={24} direction='VERTICAL'>...</Stack>`;
   const GridSnippet = `<Grid columns={3} gap={24}>...</Grid>`;
   const LinkSnippet = `<Link href="#">Link</Link>`;
@@ -48,8 +47,14 @@ export const Home: FC<{}> = () => {
         <Button variant='TERTIARY' size='M' after={<External />}>EngageR</Button>
       </Navigation>
 
-      <Stack space={'var(--scale-72)'} direction='VERTICAL' localStyles={{padding: 'var(--scale-48)'}}>
+      <Stack space={'var(--scale-72)'} direction='VERTICAL' localStyles={{padding: 'var(--scale-48)', alignItems: 'center'}}>
         <Heading level="1">PAYC Legends</Heading>
+          <Heading level="2" style={{ textAlign: 'center', margin: 'var(--scale-48) 0' }}>Welcome to the world of PAYC Legends</Heading>
+          <p style={{ textAlign: 'center', color: 'var(--dark-200)' }}>Explore. Trade. Earn. The first fully integrated NFT platform with DeFi capabilities.</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--scale-24)', margin: 'var(--scale-48) 0' }}>
+            <Button size='L' variant='PRIMARY'>Explore Portals</Button>
+            <Button size='L' variant='SECONDARY'>View Marketplace</Button>
+          </div>
       </Stack>
 
       {/* LAYOUT */}
@@ -64,7 +69,7 @@ export const Home: FC<{}> = () => {
         </Stack>
         <Stack space={'var(--scale-12)'} direction='VERTICAL'>
           <Heading level="6">Stack Example / Horizontal direction</Heading>
-          <Code>{StackHorSnippet}</Code>
+          <Code>{StackVerSnippet}</Code>
           <Stack space={'var(--scale-24)'} direction='HORIZONTAL'>
             <Box localStyles={{ width: 'var(--scale-24)', height: 'var(--scale-24)', background: 'var(--dark-100)' }}><></></Box>
             <Box localStyles={{ width: 'var(--scale-24)', height: 'var(--scale-24)', background: 'var(--dark-100)' }}><></></Box>
