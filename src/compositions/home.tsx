@@ -52,16 +52,28 @@ export const Home: FC<{}> = () => {
       
             {/* PAYC Legends Banner */}
             <div className="payc-legends-banner">
+  
+    {/* PAYC Legends Banner Component */}
+    <PAYCLegendsBanner />
+  
               {/* Replace with your banner image/component */}
             </div>
             
             {/* PAYC Legends PFP */}
             <div className="payc-legends-pfp">
+  
+    {/* PAYC Legends PFP Component */}
+    <PAYCLegendsPFP />
+  
               {/* Replace with your profile picture component or image */}
             </div>
             
             {/* PAYC Legends Text */}
             <div className="payc-legends-text">
+  
+    {/* PAYC Legends Text Component */}
+    <PAYCLegendsText />
+  
               {/* Replace with your text component or content */}
             </div>
             
