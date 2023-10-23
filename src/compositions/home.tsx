@@ -49,6 +49,32 @@ export const Home: FC<{}> = () => {
         <Button variant='TERTIARY' size='M' after={<External />}>Merch</Button>
         <Button variant='TERTIARY' size='M' after={<External />}>EngageR</Button>
       </Navigation>
+      
+            {/* PAYC Legends Banner */}
+            <div className="payc-legends-banner">
+              {/* Replace with your banner image/component */}
+            </div>
+            
+            {/* PAYC Legends PFP */}
+            <div className="payc-legends-pfp">
+              {/* Replace with your profile picture component or image */}
+            </div>
+            
+            {/* PAYC Legends Text */}
+            <div className="payc-legends-text">
+              {/* Replace with your text component or content */}
+            </div>
+            
+            {/* Body with view collection and portal buttons */}
+            <div className="payc-body-section">
+              <div className="payc-collection-section">
+                {/* Buttons or links to collections */}
+                <button>Genesis</button>
+                <button>Degen Hours</button>
+                <button>Frogtober</button>
+                <button>Legend</button>
+              </div>
+            </div>
 
       <Stack direction='VERTICAL' localStyles={{marginTop: 86, marginBottom: 94, '@media (min-width: 1080px)': { marginBottom: 50,}}}>
 
@@ -288,5 +314,40 @@ export const Home: FC<{}> = () => {
     </>
   );
 }
+
+
+// PAYC Legends Banner
+const PAYCLegendsBanner = () => (
+  <div className="payc-legends-banner">
+    {/* Banner content goes here */}
+  </div>
+);
+
+// PAYC Legends PFP
+const PAYCLegendsPFP = () => (
+  <div className="payc-legends-pfp">
+    {/* PFP content goes here */}
+  </div>
+);
+
+// PAYC Legends Text
+const PAYCLegendsText = () => (
+  <div className="payc-legends-text">
+    {/* Text content goes here */}
+  </div>
+);
+
+
+// Adding new sections to the Home component
+const HomeUpdated = () => (
+  <>
+    <Navigation />
+    {/* Other existing components */}
+    <PAYCLegendsBanner />
+    <PAYCLegendsPFP />
+    <PAYCLegendsText />
+    {/* More components to be added here */}
+  </>
+);
 
 export default Home;
