@@ -6,23 +6,23 @@ type Props = {
   children: ReactNode;
   columns?: number;
   gap?: string;
-  customStyles?: CSSObject;
+  localStyles?: CSSObject;
 }
 
-const El = styled.div<Props>`
+const Outer = styled.div<Props>`
   display: grid;
   grid-template-columns: repeat(${(props) => props.columns || 2}, 1fr);
   gap: ${(props) => props.gap || '16px'};
 
   /* Apply custom styles if provided */
-  ${(props) => props.customStyles}
+  ${(props) => props.localStyles}
 `;
 
-const Grid: React.FC<Props> = ({ children, columns, gap, customStyles }) => {
+const Grid: React.FC<Props> = ({ children, columns, gap, localStyles }) => {
   return (
-    <El columns={columns} gap={gap} customStyles={customStyles}>
+    <Outer columns={columns} gap={gap} localStyles={localStyles}>
       {children}
-    </El>
+    </Outer>
   );
 };
 

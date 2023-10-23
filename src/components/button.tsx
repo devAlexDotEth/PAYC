@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { CSSObject } from '@emotion/react';
 import Body from './body';
 
 type Props = {
@@ -11,11 +12,13 @@ type Props = {
   after?: ReactNode;
   iconOnly?: boolean;
   onClick?: () => void;
+  localStyles?: CSSObject;
 }
 
-const El = styled.button(({ size = 'S', iconOnly = false, variant }: Props) => ({
+const El = styled.button(({ size = 'S', iconOnly = false, variant, localStyles }: Props) => ({
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: 4,
   background: 'transparent',
   border: '1px solid transparent',
@@ -52,13 +55,14 @@ const El = styled.button(({ size = 'S', iconOnly = false, variant }: Props) => (
   ...(variant === 'TERTIARY' && {
     background: 'transparent',
   }),
+  ...(localStyles)
 }));
 
-const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before, iconOnly = false, after, ...props }) => {
+const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before, iconOnly = false, after, localStyles, ...props }) => {
   return (
     <>
       {variant === 'PRIMARY' &&
-        <El size={size} variant={variant} iconOnly={iconOnly} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
@@ -68,9 +72,9 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
             : 
             <>
             {before && <span style={{display: 'flex'}}>{before}</span>}
-            {size === 'S' && <Body theme="DARK" size="S" weight="NORMAL" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'M' && <Body theme="DARK" size="M" weight="BOLD" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'L' && <Body theme="DARK" size="L" style={{lineHeight: 1}}>{children}</Body>}
+            {size === 'S' && <Body theme="DARK" size="S" weight="NORMAL" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'M' && <Body theme="DARK" size="M" weight="BOLD" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'L' && <Body theme="DARK" size="L" weight="BOLD" localStyles={{lineHeight: 1}}>{children}</Body>}
             {after && <span style={{display: 'flex'}}>{after}</span>} 
             </> 
 
@@ -78,7 +82,7 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
         </El>
       }
       {variant === 'SECONDARY' &&       
-        <El size={size} variant={variant} iconOnly={iconOnly} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
@@ -88,16 +92,16 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
             :
             <>
             {before && <span style={{display: 'flex'}}>{before}</span>}
-            {size === 'S' && <Body size="S" weight="NORMAL" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'M' && <Body size="M" weight="BOLD" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'L' && <Body size="L" weight="BOLD" style={{lineHeight: 1}}>{children}</Body>}
+            {size === 'S' && <Body size="S" weight="NORMAL" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'M' && <Body size="M" weight="BOLD" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'L' && <Body size="L" weight="BOLD" localStyles={{lineHeight: 1}}>{children}</Body>}
             {after && <span style={{display: 'flex'}}>{after}</span>}
             </>
           }
         </El>
       }
       {variant === 'TERTIARY' &&       
-        <El size={size} variant={variant} iconOnly={iconOnly} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
@@ -107,9 +111,9 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
             :
             <>
             {before && <span style={{display: 'flex'}}>{before}</span>}
-            {size === 'S' && <Body size="S" weight="NORMAL" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'M' && <Body size="M" weight="BOLD" style={{lineHeight: 1}}>{children}</Body>}
-            {size === 'L' && <Body size="L" weight="BOLD" style={{lineHeight: 1}} >{children}</Body>}
+            {size === 'S' && <Body size="S" weight="NORMAL" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'M' && <Body size="M" weight="BOLD" localStyles={{lineHeight: 1}}>{children}</Body>}
+            {size === 'L' && <Body size="L" weight="BOLD" localStyles={{lineHeight: 1}} >{children}</Body>}
             {after && <span style={{display: 'flex'}}>{after}</span>}
             </>
           }

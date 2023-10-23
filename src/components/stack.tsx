@@ -11,18 +11,18 @@ type Props = {
 
 const Stack: React.FC<Props> = ({ children, direction = 'HORIZONTAL', space = 8, localStyles }) => {
   return (
-    <Box localStyles={localStyles}>
+    <>
       {direction === 'HORIZONTAL' &&
-        <Box localStyles={{ display: 'flex', gap: space }}>
+        <Box localStyles={{ display: 'flex', gap: space, ...(localStyles) }}>
           {children}
         </Box>
       }
       {direction === 'VERTICAL' &&       
-          <Box localStyles={{ display: 'flex', flexDirection: 'column', gap: space }}>
+        <Box localStyles={{ display: 'flex', flexDirection: 'column', gap: space, ...(localStyles) }}>
           {children}
         </Box>
       }
-    </Box>
+    </>
   );
 };
 

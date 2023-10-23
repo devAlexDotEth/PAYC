@@ -1,17 +1,19 @@
 import { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { CSSObject } from '@emotion/react';
 
 type Props = {
   level?: '1' | '2' | '3' | '4' | '5' | '6';
   theme?: 'LIGHT' | 'DARK';
   children?: ReactNode;
   style?: any;
+  localStyles?: CSSObject;
 };
 
-const Heading: FC<Props> = ({ level = '1', children, theme = 'LIGHT', ...props}) => {
+const Heading: FC<Props> = ({ level = '1', children, theme = 'LIGHT', localStyles, ...props}) => {
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
 
-  const El = styled(HeadingTag)(({ level = '1', theme = 'LIGHT' }: Props) => ({
+  const Inner = styled(HeadingTag)(({ level = '1', theme = 'LIGHT', localStyles }: Props) => ({
     margin: 0,
     '-webkit-font-smoothing': 'antialiased',
     fontWeight: '500',
@@ -48,10 +50,11 @@ const Heading: FC<Props> = ({ level = '1', children, theme = 'LIGHT', ...props})
     ...(level === '6' && {
       fontSize: 21,
     }),
+    ...(localStyles)
   }));
 
   return (
-    <El level={level} theme={theme} {...props}>{children}</El>
+    <Inner level={level} theme={theme} localStyles={localStyles} {...props}>{children}</Inner>
   );
 }
 

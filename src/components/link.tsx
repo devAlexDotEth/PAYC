@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { CSSObject } from '@emotion/react';
 import Body from './body';
 
 type Props = {
@@ -9,9 +10,11 @@ type Props = {
   href?: string;
   before?: ReactNode;
   after?: ReactNode;
+  localStyles?: CSSObject;
+  iconOnly?: boolean;
 }
 
-const El = styled.a(({ size = 'S', theme = 'LIGHT' }: Props) => ({
+const Inner = styled.a(({ size = 'S', theme = 'LIGHT', localStyles }: Props) => ({
   display: 'flex',
   alignItems: 'center',
   gap: 4,
@@ -42,17 +45,30 @@ const El = styled.a(({ size = 'S', theme = 'LIGHT' }: Props) => ({
     fontSize: 21,
     fontWeight: '700',
   }),
+  ...(localStyles)
 }));
 
-const Link: FC<Props> = ({ size = 'S', children, theme = 'LIGHT', before, after, ...props }) => {
+const Link: FC<Props> = ({ size = 'S', children, theme = 'LIGHT', before, after, iconOnly, localStyles, ...props }) => {
   return (
-    <El size={size} theme={theme} {...props}>
-      {before && <>{before}</>}
-      {size === 'S' && <Body size="S">{children}</Body>}
-      {size === 'M' && <Body size="M">{children}</Body>}
-      {size === 'L' && <Body size="L">{children}</Body>}
-      {after && <>{after}</> }
-    </El>
+    <Inner size={size} theme={theme} localStyles={localStyles} {...props}>
+      <>
+      {iconOnly ? 
+          <>
+          {size === 'S' && <>{children}</>}
+          {size === 'M' && <>{children}</>}
+          {size === 'L' && <>{children}</>}
+          </>
+          : 
+          <>
+          {before && <>{before}</>}
+          {size === 'S' && <Body size="S">{children}</Body>}
+          {size === 'M' && <Body size="M">{children}</Body>}
+          {size === 'L' && <Body size="L">{children}</Body>}
+          {after && <>{after}</> }
+          </> 
+        }      
+      </>
+    </Inner>
   );
 }
 

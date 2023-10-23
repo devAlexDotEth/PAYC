@@ -8,7 +8,7 @@ interface CodeProps {
   customStyles?: CSSObject;
 }
 
-const StyledCode = styled.code<CodeProps>`
+const Outer = styled.code<CodeProps>`
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   background-color: var(--dark-500);
   padding: 8px;
@@ -21,7 +21,7 @@ const StyledCode = styled.code<CodeProps>`
 `;
 
 const Code: React.FC<CodeProps> = ({ children, customStyles }) => {
-  return <StyledCode customStyles={customStyles}>{children}</StyledCode>;
+  return <Outer customStyles={customStyles}>{children}</Outer>;
 };
 
 export default Code;

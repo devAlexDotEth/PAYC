@@ -7,14 +7,14 @@ type BoxProps = {
   localStyles?: CSSObject;
 };
 
-const StyledBox = styled.div<BoxProps>`
+const Outer = styled.div<BoxProps>`
   box-sizing: border-box;
   width: 100%;
   ${(props) => props.localStyles};
 `;
 
 const Box: React.FC<BoxProps> = ({ children, localStyles }) => {
-  return <StyledBox localStyles={localStyles}>{children}</StyledBox>;
+  return <Outer localStyles={localStyles}>{children}</Outer>;
 };
 
 export default Box;

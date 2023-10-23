@@ -1,15 +1,16 @@
 import { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { CSSObject } from '@emotion/react';
 
 type Props = {
   size?: 'S' | 'M' | 'L';
   theme?: 'LIGHT' | 'DARK';
   weight?: 'NORMAL' | 'BOLD';
   children?: ReactNode;
-  style?: any;
+  localStyles?: CSSObject;
 }
 
-const El = styled.p(({ size = 'S', theme = 'LIGHT', weight = 'NORMAL' }: Props) => ({
+const El = styled.p(({ size = 'S', theme = 'LIGHT', weight = 'NORMAL', localStyles }: Props) => ({
   margin: 0,
   '-webkit-font-smoothing': 'antialiased',
   '-moz-osx-font-smoothing': 'grayscale',
@@ -36,11 +37,12 @@ const El = styled.p(({ size = 'S', theme = 'LIGHT', weight = 'NORMAL' }: Props) 
   ...(size === 'L' && {
     fontSize: 21,
   }),
+  ...(localStyles)
 }));
 
-const Body: FC<Props> = ({ size = 'S', children, theme = 'LIGHT', weight = 'NORMAL', style, ...props }) => {
+const Body: FC<Props> = ({ size = 'S', children, theme = 'LIGHT', weight = 'NORMAL', localStyles, ...props }) => {
   return (
-    <El size={size} weight={weight} style={style} theme={theme} {...props}>
+    <El size={size} weight={weight} theme={theme} localStyles={localStyles} {...props}>
       {children}
     </El>
   );

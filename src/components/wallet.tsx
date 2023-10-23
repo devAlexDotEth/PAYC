@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import styled from '@emotion/styled';
 import Button from './button';
-import image from '../assets/pfp.png';
 import Box from './box';
 import ChevronDown from './icons/chevron';
 import Body from './body';
@@ -26,7 +25,9 @@ const Eth = styled.div(({
 
 const Address = styled.div(({
   width: '6ch',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
 }));
 
 const LocalButton = styled(Button)(({
@@ -35,7 +36,7 @@ const LocalButton = styled(Button)(({
   marginLeft: -1
 }));
 
-const Wallet: FC<Props> = ({ balance = '0', address = '0x00000000000000000000000000000000000', profile = image }) => {
+const Wallet: FC<Props> = ({ balance = '0', address = '0x00000000000000000000000000000000000', profile }) => {
 
   const handleClick = () => {
     alert('Change Wallet!');
@@ -47,7 +48,7 @@ const Wallet: FC<Props> = ({ balance = '0', address = '0x00000000000000000000000
       <LocalButton 
         variant='SECONDARY'
         size='S'
-        before={<img width={17} height={17} src={profile} alt="Profile" />} 
+        before={profile && <img width={17} height={17} src={profile} alt="Profile" />} 
         after={<ChevronDown />}
         onClick={handleClick}
       >
