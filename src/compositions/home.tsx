@@ -22,6 +22,13 @@ import Footer from '../components/footer';
 import Navigation from '../components/navigation';
 import Wallet from '../components/wallet';
 import image from '../assets/pfp.png';
+import Banner from '../components/banner';
+import PFP from '../assets/pfp/legends.png';
+import Card from '../components/card';
+import GenesisPFP from '../assets/pfp/genesis.png';
+import DegenHoursPFP from '../assets/pfp/degenhours.png';
+import FrogtoberPFP from '../assets/pfp/frogtober.png';
+import LegendsPFP from '../assets/pfp/legends.png';
 
 export const Home: FC<{}> = () => {
   
@@ -49,46 +56,76 @@ export const Home: FC<{}> = () => {
         <Button variant='TERTIARY' size='M' after={<External />}>Merch</Button>
         <Button variant='TERTIARY' size='M' after={<External />}>EngageR</Button>
       </Navigation>
-      
-            {/* PAYC Legends Banner */}
-            <div className="payc-legends-banner">
-  
-    {/* PAYC Legends Banner Component */}
-    <PAYCLegendsBanner />
-  
-              {/* Replace with your banner image/component */}
-            </div>
-            
-            {/* PAYC Legends PFP */}
-            <div className="payc-legends-pfp">
-  
-    {/* PAYC Legends PFP Component */}
-    <PAYCLegendsPFP />
-  
-              {/* Replace with your profile picture component or image */}
-            </div>
-            
-            {/* PAYC Legends Text */}
-            <div className="payc-legends-text">
-  
-    {/* PAYC Legends Text Component */}
-    <PAYCLegendsText />
-  
-              {/* Replace with your text component or content */}
-            </div>
-            
-            {/* Body with view collection and portal buttons */}
-            <div className="payc-body-section">
-              <div className="payc-collection-section">
-                {/* Buttons or links to collections */}
-                <button>Genesis</button>
-                <button>Degen Hours</button>
-                <button>Frogtober</button>
-                <button>Legend</button>
-              </div>
-            </div>
 
       <Stack direction='VERTICAL' localStyles={{marginTop: 86, marginBottom: 94, '@media (min-width: 1080px)': { marginBottom: 50,}}}>
+
+        <Banner pfp={PFP} heading='PAYC Legends'>
+          <Button size='M' variant="PRIMARY" onClick={handleClick}>View Collection</Button>
+        </Banner>
+
+
+          {/* Home Tiles */}
+          <Grid
+            columns={1}
+            gap={'var(--scale-48)'} 
+            localStyles={{
+              padding: 'var(--scale-48)',
+              gridTemplateColumns: '1fr',
+              '@media (min-width: 800px)' :{
+                gridTemplateColumns: '1fr 1fr',
+              },
+              '@media (min-width: 1200px)' :{
+                gridTemplateColumns: '1fr 1fr 1fr 1fr',
+              },
+            }}>
+            <Card heading="Genesis" pfp={GenesisPFP} direction="VERTICAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+            <Card heading="Degen Hours" pfp={DegenHoursPFP} direction="VERTICAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+            <Card heading="Frogtober" pfp={FrogtoberPFP} direction="VERTICAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+            <Card heading="Legends" pfp={LegendsPFP} direction="VERTICAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+          </Grid>
+
+
+          {/* Portal Tiles */}
+          <Grid
+            columns={1}
+            gap={'var(--scale-48)'} 
+            localStyles={{
+              padding: 'var(--scale-48)',
+              gridTemplateColumns: '1fr',
+              '@media (min-width: 800px)' :{
+                gridTemplateColumns: '1fr 1fr',
+              },
+              '@media (min-width: 1200px)' :{
+                gridTemplateColumns: '1fr',
+              },
+            }}>
+            <Card heading="Degen Hours" pfp={DegenHoursPFP} direction="HORIZONTAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+            <Card heading="Frogtober" pfp={FrogtoberPFP} direction="HORIZONTAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+            <Card heading="Legends" pfp={LegendsPFP} direction="HORIZONTAL">
+              <Button size='M' variant='SECONDARY' onClick={handleClick}>View Collection</Button>
+              <Button size='M' variant="PRIMARY" onClick={handleClick}>Select Portal</Button>
+            </Card>
+          </Grid>
+          
+
 
         <Stack space={'var(--scale-72)'} direction='VERTICAL' localStyles={{padding: 'var(--scale-48)'}}>
           <Heading level="1">PAYC Design System</Heading>
@@ -326,40 +363,5 @@ export const Home: FC<{}> = () => {
     </>
   );
 }
-
-
-// PAYC Legends Banner
-const PAYCLegendsBanner = () => (
-  <div className="payc-legends-banner">
-    {/* Banner content goes here */}
-  </div>
-);
-
-// PAYC Legends PFP
-const PAYCLegendsPFP = () => (
-  <div className="payc-legends-pfp">
-    {/* PFP content goes here */}
-  </div>
-);
-
-// PAYC Legends Text
-const PAYCLegendsText = () => (
-  <div className="payc-legends-text">
-    {/* Text content goes here */}
-  </div>
-);
-
-
-// Adding new sections to the Home component
-const HomeUpdated = () => (
-  <>
-    <Navigation />
-    {/* Other existing components */}
-    <PAYCLegendsBanner />
-    <PAYCLegendsPFP />
-    <PAYCLegendsText />
-    {/* More components to be added here */}
-  </>
-);
 
 export default Home;

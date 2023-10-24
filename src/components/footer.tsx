@@ -42,11 +42,33 @@ export const Footer: FC<Props> = ({socials, contactNavigation, ethPrice = '1,701
   return (
     <El localStyles={localStyles}>
       <Stack direction='HORIZONTAL' space={'var(--scale-12)'} localStyles={{alignItems: 'center'}} >
-        <Body localStyles={{display: 'none', '@media (min-width: 1080px)': {display: 'flex'}}}>Pepe Ape Yacht Club ™</Body>
+        <Body localStyles={{
+          display: 'none', 
+          '@media (min-width: 1080px)': {
+            display: 'flex'
+          }
+        }}>
+          Pepe Ape Yacht Club ™
+        </Body>
         <Button size='S' variant='TERTIARY' onClick={contactNavigation} 
-          localStyles={{display: 'none', '@media (min-width: 1080px)': {display: 'inline-flex'}}}>Contact us</Button>
+          localStyles={{
+            display: 'none', 
+            '@media (min-width: 1080px)': {
+              display: 'inline-flex'
+            }
+          }}>
+            Contact us
+        </Button>
         <Button size='S' variant='SECONDARY' onClick={contactNavigation} 
-          localStyles={{width: '100%', marginBottom: 'var(--scale-16)','@media (min-width: 1080px)': {display: 'none'}}}>Contact us</Button>
+          localStyles={{
+            width: '100%', 
+            marginBottom: 'var(--scale-16)',
+            '@media (min-width: 1080px)': {
+              display: 'none'
+              }
+          }}>
+            Contact us
+        </Button>
         <Stack 
           direction='HORIZONTAL' 
           space={'var(--scale-16)'} 

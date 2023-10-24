@@ -13,8 +13,8 @@ const Outer = styled.div<BoxProps>`
   ${(props) => props.localStyles};
 `;
 
-const Box: React.FC<BoxProps> = ({ children, localStyles }) => {
-  return <Outer localStyles={localStyles}>{children}</Outer>;
+const Box: React.FC<BoxProps> = ({ children, localStyles, ...props }) => {
+  return <Outer localStyles={localStyles} {...props}>{children}</Outer>;
 };
 
 export default Box;

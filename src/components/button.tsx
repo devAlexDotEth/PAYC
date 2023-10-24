@@ -50,7 +50,7 @@ const El = styled.button(({ size = 'S', iconOnly = false, variant, localStyles }
   }),
   ...(variant === 'SECONDARY' && {
     background: 'transparent',
-    border: '1px solid var(--button-border)',
+    border: '1px solid var(--button-border)',   
   }),
   ...(variant === 'TERTIARY' && {
     background: 'transparent',
