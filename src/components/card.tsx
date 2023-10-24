@@ -26,7 +26,7 @@ type Props = {
 const El = styled(Box)(({ localStyles }: ElProps) => ({
   display: 'flex',
   justifyContent: 'start',
-  alignItems: 'center',
+  alignItems: 'start',
   background: 'var(--dark-300)',
   width: '100%',
   borderRadius: 'var(--scale-8)',

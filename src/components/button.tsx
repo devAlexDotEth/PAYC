@@ -11,11 +11,13 @@ type Props = {
   before?: ReactNode;
   after?: ReactNode;
   iconOnly?: boolean;
+  disabled?: boolean;
+  active?: boolean;
   onClick?: () => void;
   localStyles?: CSSObject;
 }
 
-const El = styled.button(({ size = 'S', iconOnly = false, variant, localStyles }: Props) => ({
+const El = styled.button(({ size = 'S', iconOnly = false, active, disabled, variant, localStyles }: Props) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -50,10 +52,17 @@ const El = styled.button(({ size = 'S', iconOnly = false, variant, localStyles }
   }),
   ...(variant === 'SECONDARY' && {
     background: 'transparent',
-    border: '1px solid var(--button-border)',   
+    border: '1px solid var(--button-border)',
   }),
   ...(variant === 'TERTIARY' && {
     background: 'transparent',
+    ...(active && {
+      border: '1px solid var(--button-border)',
+    }), 
+  }),
+  ...(disabled && {
+    cursor: 'not-allowed',
+    background: 'var(--dark-100)',
   }),
   ...(localStyles)
 }));

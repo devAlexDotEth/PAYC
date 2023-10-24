@@ -24,7 +24,7 @@ const Eth = styled.div(({
 }));
 
 const Address = styled.div(({
-  width: '6ch',
+  width: '8ch',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
