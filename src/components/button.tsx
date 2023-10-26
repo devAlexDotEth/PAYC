@@ -4,10 +4,12 @@ import { CSSObject } from '@emotion/react';
 import Body from './body';
 
 type Props = {
+  as?: any;
   size?: 'S' | 'M' | 'L';
   variant?: 'PRIMARY' | 'SECONDARY' | 'TERTIARY';
   children?: ReactNode;
   href?: string;
+  target?: string;
   before?: ReactNode;
   after?: ReactNode;
   iconOnly?: boolean;
@@ -26,6 +28,7 @@ const El = styled.button(({ size = 'S', iconOnly = false, active, disabled, vari
   border: '1px solid transparent',
   borderRadius: 4,
   margin: 0,
+  textDecoration: 'none',
   '-webkit-font-smoothing': 'antialiased',
   '-moz-osx-font-smoothing': 'grayscale',
   fontFamily:  'Inter, sans-serif',
@@ -67,11 +70,11 @@ const El = styled.button(({ size = 'S', iconOnly = false, active, disabled, vari
   ...(localStyles)
 }));
 
-const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before, iconOnly = false, after, localStyles, ...props }) => {
+const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before, as, iconOnly = false, after, localStyles, ...props }) => {
   return (
     <>
       {variant === 'PRIMARY' &&
-        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} as={as} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
@@ -91,7 +94,7 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
         </El>
       }
       {variant === 'SECONDARY' &&       
-        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} as={as} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
@@ -110,7 +113,7 @@ const Button: FC<Props> = ({ size = 'S', children, variant = 'SECONDARY', before
         </El>
       }
       {variant === 'TERTIARY' &&       
-        <El size={size} variant={variant} iconOnly={iconOnly} localStyles={localStyles} {...props}>
+        <El size={size} variant={variant} iconOnly={iconOnly} as={as} localStyles={localStyles} {...props}>
           {iconOnly ? 
             <>
             {size === 'S' && <>{children}</>}
